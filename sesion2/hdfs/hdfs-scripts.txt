@@ -1,0 +1,22 @@
+# carga de datos a HDFS por terminal:
+
+hdfs dfs -ls /
+hdfs dfs -ls /user
+hdfs dfs -ls /user/hadoop
+hdfs dfs -ls /user/hadoop/datasets
+
+hdfs dfs -mkdir /user/hadoop/datasets
+
+hdfs dfs -mkdir /user/hadoop/datasets/gutenberg-small
+
+hdfs dfs -put $HOME/si7006-252/datasets/gutenberg-small/*.txt /user/hadoop/datasets/gutenberg-small/
+
+hdfs dfs -copyFromLocal $HOME/si7006-252/datasets/gutenberg-small/*.txt /user/hadoop/datasets/gutenberg-small/
+hdfs dfs -ls /user/hadoop/datasets
+hdfs dfs -ls /user/hadoop/datasets/gutenberg-small
+
+hdfs dfs -get /user/hadoop/gutenberg-small/*.txt $HOME/mis_datasets/
+
+hdfs dfs -copyToLocal /user/hadoop/gutenberg-small/*.txt $HOME/mis_datasets/
+
+ls -l $HOME/mis_datasets
