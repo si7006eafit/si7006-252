@@ -91,24 +91,24 @@ CONSUMERS:
 
 1. abrir una consola para consumidor1:
 
-        $ cd si7006-252/streaming/kafka/lab2
+        $ cd si7006-252/sesion3/kafka/lab2
         $ python3 kafka-consumer-localhost.py
 
 2. abrir una segunda consola para consumidor2:
 
-        $ cd si7006-252/streaming/kafka/lab2
+        $ cd si7006-252/sesion3/kafka/lab2
         $ python3 kafka-consumer-localhost.py
 
 3. abrir una tercera consola para productor1:
 
-        $ cd si7006-252/streaming/kafka/lab2
+        $ cd si7006-252/sesion3/kafka/lab2
         $ python3 kafka-producer-localhost.py
 
 enviar algunos mensajes de prueba
 
 4. abrir una cuarta consola para productor2:
 
-        $ cd si7006-252/streaming/kafka/lab2
+        $ cd si7006-252/sesion3/kafka/lab2
         $ python3 kafka-producer-localhost.py
 
 enviar algunos mensajes de prueba

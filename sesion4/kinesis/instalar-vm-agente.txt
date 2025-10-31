@@ -21,6 +21,6 @@ sudo yum install -y aws-kinesis-agent
 
 git clone https://github.com/si7006eafit/si7006-252.git
 
-cd si7006-252/streaming
+cd si7006-252/sesion4
 
 # continuar con la guia de kinesis/readme.md
