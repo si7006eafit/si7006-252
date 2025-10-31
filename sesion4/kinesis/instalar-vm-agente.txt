@@ -13,9 +13,15 @@ sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-c
 
 sudo chmod +x /usr/local/bin/docker-compose
 
-reboot
+sudo reboot
 
 sudo yum install -y aws-kinesis-agent
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable aws-kinesis-agent
+
+sudo systemctl start aws-kinesis-agent
 
 # clonar el repositorio de la materia:
 

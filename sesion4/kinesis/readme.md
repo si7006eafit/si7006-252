@@ -17,16 +17,20 @@
 
         Destination settings/S3 bucket: si7006orderlogs     (escoja su propio nombre de bucket y realice todas las actualizaciones pertinentes)
         
-        Buffer hints, compression and encryption:
+Opciones avanzadas: Buffer hints, compression, file extension and encryption
+
         Buffer interval: 60 segs
 
-        Advanced settings:
+Opciones avanzadas: Advanced settings:
+
         PermissionsInfo:
         (o) Choose existing IAM role: LabRole
 
         Click on: Create Firehose stream
         
 2. crear una instancia EC2 AMI 2023 linux
+
+Selecciones la VM EC2 -> Actions -> Security -> Modify IAM role:
 
 Actualizar el IAM Role a 'LabInstanceProfile'
 
@@ -52,13 +56,15 @@ Este Role asociarlo a la instancia EC2 donde instalará el agent de kinesis.
 
 ### copie el archivo del repo github: agent.json-with-firehose hacia /etc/aws-kinesis/agent.json
 
+        $ cd kinesis/
+
         $ sudo cp agent.json-with-firehose /etc/aws-kinesis/agent.json
 
         $ sudo vim /etc/aws-kinesis/agent.json
 
 6. iniciar el agente:
 
-        $ sudo systemctl start aws-kinesis-agent
+        $ sudo systemctl restart aws-kinesis-agent
 
 7. ejecutar un envio de logs:
 
