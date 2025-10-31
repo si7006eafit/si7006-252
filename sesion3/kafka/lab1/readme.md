@@ -21,8 +21,7 @@
 
 -- generar CLUSTER_ID:
 
-    docker run --rm confluentinc/cp-kafka:7.5.0 \ 
-    -kafka-storage random-uuid
+    docker run --rm confluentinc/cp-kafka:7.5.0 kafka-storage random-uuid
 
 -- con el resultado, crear .env: 
 
@@ -31,13 +30,11 @@
 
 ## Ver el quórum Raft:
 
-    docker exec -it kafka-1 kafka-metadata-quorum \
-    --bootstrap-server kafka-1:9092 describe --status
+    docker exec -it kafka-1 kafka-metadata-quorum --bootstrap-server kafka-1:9092 describe --status
 
 ## Revisar el cluster.id grabado:
 
-    docker exec -it kafka-1 grep cluster.id \
-    /var/lib/kafka/data/meta.properties
+    docker exec -it kafka-1 grep cluster.id /var/lib/kafka/data/meta.properties
 
 ## Crear tópicos (replicación y particiones)
 
@@ -65,25 +62,17 @@
 
 ### productores:
 
-    docker exec -it kafka-1 kafka-console-producer \ 
-    --bootstrap-server kafka-1:9092 \
-    --topic pedidos
+    docker exec -it kafka-1 kafka-console-producer --bootstrap-server kafka-1:9092 --topic pedidos
 
 ### consumidores: al menos 2 terminales
 
-    docker exec -it kafka-1 kafka-console-consumer \
-    --bootstrap-server kafka-1:9092 \
-    --topic pedidos \
-    --group grupoA
+    docker exec -it kafka-1 kafka-console-consumer --bootstrap-server kafka-1:9092 --topic pedidos --group grupoA
 
 ### Ver estado del grupo
 
-    docker exec -it kafka-1 kafka-consumer-groups \
-    --bootstrap-server kafka-1:9092 --list
+    docker exec -it kafka-1 kafka-consumer-groups --bootstrap-server kafka-1:9092 --list
 
-    docker exec -it kafka-1 kafka-consumer-groups \
-    --bootstrap-server kafka-1:9092 \
-    --describe --group grupoA
+    docker exec -it kafka-1 kafka-consumer-groups --bootstrap-server kafka-1:9092 --describe --group grupoA
 
 ### Prueba de fallo (líder de partición y controller)
 
@@ -118,24 +107,6 @@
     docker exec -it kafka-1 kafka-metadata-quorum \
     --bootstrap-server kafka-1:9092 describe --status
 
-## Ejercicios de lab kafka:
-
-### Consumer Groups y particiones
-
-- Crea un topico clientes con --partitions 3 --replication-factor 3.
-- crear 4 consumidores en el mismo grupo y confirma que 1 queda idle.
-- cerrar uno de los consumidores activos y verifica el rebalanceo.
-
-### Orden por clave
-
-- Producir mensajes a transacciones usando key user_id (con producer console con key:valor).
-- Verifica que el mismo user_id va siempre a la misma partición.
-
-### Replicación y pérdida de nodos
-
-- Con pedidos (RF=3), apaga un nodo: lectura y escritura deben continuar.
-- Apaga dos nodos: observa errores por falta de quórum (no debería aceptar escrituras con acks=all).
-
 # productor y consumidor con python 
 
 ## Producer (confluent-kafka):
@@ -160,6 +131,25 @@
         if msg is None: 
             continue
         print(msg.key(), msg.value())
+
+
+# Ejercicios de lab kafka: (opcional)
+
+## Consumer Groups y particiones
+
+- Crea un topico clientes con --partitions 3 --replication-factor 3.
+- crear 4 consumidores en el mismo grupo y confirma que 1 queda idle.
+- cerrar uno de los consumidores activos y verifica el rebalanceo.
+
+## Orden por clave
+
+- Producir mensajes a transacciones usando key user_id (con producer console con key:valor).
+- Verifica que el mismo user_id va siempre a la misma partición.
+
+## Replicación y pérdida de nodos
+
+- Con pedidos (RF=3), apaga un nodo: lectura y escritura deben continuar.
+- Apaga dos nodos: observa errores por falta de quórum (no debería aceptar escrituras con acks=all).
 
 # bajar el cluster:
 
