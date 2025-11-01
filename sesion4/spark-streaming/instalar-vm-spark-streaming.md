@@ -27,6 +27,10 @@
     pip install findspark
     pip install pyspark
 
+    sudo dnf install git
+    git clone https://github.com/si7006eafit/si7006-252.git
+    cd si7006eafit/si7006-252/sesion4/spark-streaming/
+
 instalar netcat en linux:
 
     sudo dnf install nc
@@ -38,6 +42,7 @@ instalar netcat en linux:
 
 # terminal 2:
 
+    cd si7006eafit/si7006-252/sesion4/spark-streaming/
     python3 sparkStreaming-ejemplo1.py
 
 # escribe varias oraciones en texto libre en la terminal 1
