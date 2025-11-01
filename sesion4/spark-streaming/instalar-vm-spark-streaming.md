@@ -24,8 +24,8 @@
     export SPARK_HOME=/home/ec2-user/spark-4.0.1-bin-hadoop3
         
 
-    pip install -q findspark
-    pip install -q pyspark
+    pip install findspark
+    pip install pyspark
 
 instalar netcat en linux:
 
