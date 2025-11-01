@@ -8,7 +8,7 @@
 ## revisar y probar la última versión de apache spark 
 ### Spark 4.0.1 (Sep 06 2025)
 ### Spark 3.5.6 (May 29 2025)
-# instalarlo en: (si es aws con ubuntu 22.04)
+
 ## "SPARK_HOME" = "/home/ec2-user/spark-4.0.1-bin-hadoop3"
 
     sudo dnf install java (instala la versión 24)
