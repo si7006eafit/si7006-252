@@ -11,7 +11,6 @@
 # instalarlo en: (si es aws con ubuntu 22.04)
 ## "SPARK_HOME" = "/home/ec2-user/spark-4.0.1-bin-hadoop3"
 
-
     sudo dnf install java (instala la versión 24)
     sudo dnf install java-11-amazon-corretto-devel
 
@@ -19,6 +18,14 @@
 
     sudo dnf install python3.12
     sudo dnf install python3-pip
+
+    wget -q https://downloads.apache.org/spark/spark-4.0.1/spark-4.0.1-bin-hadoop3.tgz
+    tar xf spark-4.0.1-bin-hadoop3.tgz
+    export SPARK_HOME=/home/ec2-user/spark-4.0.1-bin-hadoop3
+        
+
+    pip install -q findspark
+    pip install -q pyspark
 
 instalar netcat en linux:
 
@@ -31,7 +38,7 @@ instalar netcat en linux:
 
 # terminal 2:
 
-    python3 sparkStreaming-ejemplo1.python3
+    python3 sparkStreaming-ejemplo1.py
 
 # escribe varias oraciones en texto libre en la terminal 1
 
