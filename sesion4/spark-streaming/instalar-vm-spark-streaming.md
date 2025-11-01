@@ -11,7 +11,7 @@
 
 ## "SPARK_HOME" = "/home/ec2-user/spark-4.0.1-bin-hadoop3"
 
-    sudo dnf install java (instala la versión 24)
+    # sudo dnf install java (instala la versión 24)
     sudo dnf install java-11-amazon-corretto-devel
 
     export JAVA_HOME=/usr/lib/jvm/java-11-amazon-corretto.x86_64/
